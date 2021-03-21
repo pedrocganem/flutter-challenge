@@ -6,26 +6,16 @@ import 'package:local_database/local_database.dart';
 abstract class QuestionService {
   Future<Result<String, QuestionServiceError>> fetchQuestions(
       String referenceKey);
-  Future<Result<bool, QuestionServiceError>> storeQuestions(
-      String referenceKey, String valueToStore);
 }
 
 class LocalQuestionsService implements QuestionService {
-  final _dbHandler = Modular.get<LocalDatabaseHandler>();
+  final _localDB = Modular.get<LocalDatabaseHandler>();
 
   @override
   Future<Result<String, QuestionServiceError>> fetchQuestions(
       String referenceKey) async {
-    final result = await _dbHandler.fetchQuestions(referenceKey);
+    final result = await _localDB.fetchQuestions(referenceKey);
     if (result != null) return Result(error: QuestionServiceError.dbError);
-    return Result(result: result);
-  }
-
-  @override
-  Future<Result<bool, QuestionServiceError>> storeQuestions(
-      String referenceKey, String valueToStore) async {
-    final result = await _dbHandler.storeQuestions(referenceKey, valueToStore);
-    if (!result) return Result(error: QuestionServiceError.dbError);
     return Result(result: result);
   }
 }

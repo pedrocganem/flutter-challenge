@@ -8,8 +8,6 @@ import 'package:foundation/generics/result.dart';
 abstract class QuestionRepository {
   Future<Result<List<QuestionModel>, QuestionRepositoryError>> fetchQuestions(
       String referenceKey);
-  Future<Result<bool, QuestionRepositoryError>> storeQuestion(
-      String referenceKey, String valueToStore);
 }
 
 class DefaultQuestionRepository implements QuestionRepository {
@@ -25,11 +23,5 @@ class DefaultQuestionRepository implements QuestionRepository {
     final questionList = List<QuestionModel>.from(
         decodedJson.map((e) => QuestionModel.fromJson(e)));
     return Result(result: questionList);
-  }
-
-  @override
-  Future<Result<bool, QuestionRepositoryError>> storeQuestion(
-      String referenceKey, String valueToStore) {
-   
   }
 }
