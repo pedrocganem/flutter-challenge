@@ -11,6 +11,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_modular:
+  local_database: 
+    path: "../../../modules/core/local_database"
+  
+  foundation:
+    path: "../../../modules/core/foundation"
 
 dev_dependencies:
   flutter_test:
