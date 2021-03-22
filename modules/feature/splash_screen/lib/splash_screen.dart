@@ -1,0 +1,2 @@
+library splash_screen;
+

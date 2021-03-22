@@ -1,4 +1,4 @@
-name: FAQ
+name: splash_screen
 description: A new Flutter package project.
 version: 0.0.1
 author:
@@ -11,13 +11,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_modular:
-    
-  local_database: 
-    path: "../../../modules/core/local_database"
-  
-  foundation:
-    path: "../../../modules/core/foundation"
 
 dev_dependencies:
   flutter_test:
