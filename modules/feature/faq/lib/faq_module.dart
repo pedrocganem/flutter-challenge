@@ -1,7 +1,6 @@
 import 'package:FAQ/add_question/data/repositories/add_question_repository.dart';
 import 'package:FAQ/add_question/data/service/add_question_service.dart';
 import 'package:FAQ/add_question/domain/use_cases/add_question_use_case.dart';
-import 'package:FAQ/questions/data/models/question_use_case_error.dart';
 import 'package:FAQ/questions/data/repositories/questions_repository.dart';
 import 'package:FAQ/questions/data/services/questions_service.dart';
 import 'package:FAQ/questions/domain/fetch_question_use_case.dart';
