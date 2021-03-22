@@ -19,6 +19,9 @@ dependencies:
   foundation:
     path: "../../../modules/core/foundation"
 
+  ui:
+    path: "../../../modules/core/ui"
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

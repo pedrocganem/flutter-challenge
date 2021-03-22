@@ -4,7 +4,11 @@ import 'package:FAQ/add_question/domain/use_cases/add_question_use_case.dart';
 import 'package:FAQ/questions/data/repositories/questions_repository.dart';
 import 'package:FAQ/questions/data/services/questions_service.dart';
 import 'package:FAQ/questions/domain/fetch_question_use_case.dart';
+import 'package:FAQ/questions/view/questions_view.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:FAQ/questions/view/questions_view_model.dart';
+import 'package:foundation/constants/routes.dart';
+
 
 class FAQModule extends ChildModule {
   @override
@@ -15,7 +19,8 @@ class FAQModule extends ChildModule {
             singleton: false),
         Bind<FetchQuestionsUseCase>((_) => DefaultFetchQuestionsUseCase(),
             singleton: false),
-        //TODO bind viewModel
+        Bind<QuestionViewModel>((_) => DefaultQuestionViewModel(),
+            singleton: false),
 
         //Add question scene
         Bind<AddQuestionService>((_) => DefaultAddQuestionService(),
@@ -29,5 +34,7 @@ class FAQModule extends ChildModule {
 
   @override
   // TODO: implement routers
-  List<ModularRouter> get routers => [];
+  List<ModularRouter> get routers => [
+    ModularRouter(AppRoutes.ROUTE_ROOT_VIEW, child: (_, args) => QuestionsView())
+  ];
 }

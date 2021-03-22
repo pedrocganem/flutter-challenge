@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   //Light mode colors
-  static const appLightPrimaryColor = Color(0xFF0000000);
-  static const appLightSecondaryColor = Color(0xFF000000);
-  static const appLightAccentColor = Color(0xFF000000);
+  static const appLightPrimaryColor = Color(0xFF000000); 
+  static const appLightSecondaryColor = Color(0xFFFFFFFF);
+  static const appLightAccentColor = Color(0xFF10159A);
   static const appLightScaffoldBackgroundColor = Colors.white;
   static const appLightAppBarColor = Color(0xFF10159A); 
   static const appLightButtonColor = Color(0xFFFFBE00);

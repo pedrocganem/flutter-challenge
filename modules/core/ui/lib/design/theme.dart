@@ -7,8 +7,10 @@ class AppTheme {
     final _fontFamily = GoogleFonts.nunito().fontFamily;
     return ThemeData(
       brightness: Brightness.light,
-      appBarTheme:
-          AppBarTheme(elevation: 0, color: AppColors.appLightAppBarColor),
+      appBarTheme: AppBarTheme(
+          elevation: 0,
+          color: AppColors.appLightAppBarColor,
+          brightness: Brightness.dark),
       primaryColor: AppColors.appLightPrimaryColor,
       accentColor: AppColors.appLightAccentColor,
       scaffoldBackgroundColor: AppColors.appLightScaffoldBackgroundColor,
@@ -21,7 +23,6 @@ class AppTheme {
             fontWeight: FontWeight.bold,
             fontFamily: _fontFamily,
           )),
-          
       textTheme: TextTheme(
         //AppBar title style
         headline1: TextStyle(
@@ -36,7 +37,7 @@ class AppTheme {
           color: AppColors.appLightPrimaryColor,
           fontFamily: _fontFamily,
           fontWeight: FontWeight.bold,
-          fontSize: 22,
+          fontSize: 16,
         ),
 
         //Question card content
@@ -52,7 +53,7 @@ class AppTheme {
           color: AppColors.appLightAccentColor,
           fontFamily: _fontFamily,
           fontWeight: FontWeight.bold,
-          fontSize: 22,
+          fontSize: 16,
         ),
       ),
     );
