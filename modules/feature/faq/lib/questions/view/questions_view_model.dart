@@ -1,4 +1,3 @@
-import 'package:FAQ/questions/data/models/question_model.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import '../data/models/question_model.dart';
 import '../domain/fetch_question_use_case.dart';
