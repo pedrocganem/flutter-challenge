@@ -1,7 +1,5 @@
 library analytics;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'package:analytics/events/core/event_logger.dart' show EventLogger;
+export 'package:analytics/events/core/snow_event.dart' show SnowEvent;
+export 'package:analytics/events/firebase/firebase_logger.dart' show DefaultFirebaseLogger;
