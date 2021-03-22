@@ -6,7 +6,7 @@ import 'package:foundation/generics/result.dart';
 
 abstract class FetchQuestionsUseCase {
   Future<Result<List<QuestionModel>, QuestionUseCaseError>> fetchQuestions(
-      String referenceKey);
+      );
 }
 
 class DefaultFetchQuestionsUseCase implements FetchQuestionsUseCase {
@@ -14,8 +14,8 @@ class DefaultFetchQuestionsUseCase implements FetchQuestionsUseCase {
 
   @override
   Future<Result<List<QuestionModel>, QuestionUseCaseError>> fetchQuestions(
-      String referenceKey) async {
-    final result = await _repository.fetchQuestions(referenceKey);
+      ) async {
+    final result = await _repository.fetchQuestions();
     if (result.error != null)
       return Result(error: QuestionUseCaseError.repositoryError);
     final questionList = result.result;

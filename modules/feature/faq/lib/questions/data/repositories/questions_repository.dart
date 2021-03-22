@@ -6,17 +6,15 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:foundation/generics/result.dart';
 
 abstract class QuestionRepository {
-  Future<Result<List<QuestionModel>, QuestionRepositoryError>> fetchQuestions(
-      String referenceKey);
+  Future<Result<List<QuestionModel>, QuestionRepositoryError>> fetchQuestions();
 }
 
 class DefaultQuestionRepository implements QuestionRepository {
   final _service = Modular.get<QuestionService>();
 
   @override
-  Future<Result<List<QuestionModel>, QuestionRepositoryError>> fetchQuestions(
-      String referenceKey) async {
-    final result = await _service.fetchQuestions(referenceKey);
+  Future<Result<List<QuestionModel>, QuestionRepositoryError>> fetchQuestions() async {
+    final result = await _service.fetchQuestions();
     if (result.error != null)
       return Result(error: QuestionRepositoryError.serviceError);
     final decodedJson = json.decode(result.result);
