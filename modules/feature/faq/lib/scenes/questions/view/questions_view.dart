@@ -1,25 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:FAQ/scenes/questions/view/questions_view_model.dart';
-import 'package:models/models/question_model.dart';
 
 class QuestionsView extends StatefulWidget {
-  final _viewModel = Modular.get<QuestionViewModel>();
+  final _viewModel = Modular.get<DefaultQuestionViewModel>();
 
   @override
   _QuestionsViewState createState() => _QuestionsViewState();
 }
 
 class _QuestionsViewState extends State<QuestionsView> {
-  List<QuestionModel> _questions = [];
   @override
   void initState() {
+    widget._viewModel.fetchQuestions();
     super.initState();
-    widget._viewModel.fetchQuestions((questions) {
-      setState() {
-        this._questions = questions;
-      }
-    });
   }
 
   @override
@@ -39,49 +34,73 @@ class _QuestionsViewState extends State<QuestionsView> {
         padding: const EdgeInsets.fromLTRB(16, 25, 16, 40),
         child: Column(children: [
           Expanded(
-            flex: 10,
-            child: ListView.separated(
-                clipBehavior: Clip.none,
-                shrinkWrap: true,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7.0),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: _questions[index].cardColor,
-                              offset: Offset(-2.0, 0.0),
-                              blurRadius: 0,
-                            ),
-                            BoxShadow(
-                                color: Color(0xFF000000).withOpacity(0.13),
-                                offset: Offset(0, 2.0),
-                                blurRadius: 14.0)
-                          ]),
-                      child: Center(
-                        child: ExpansionTile(
-                          trailing: IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.keyboard_arrow_down, size: 32),
-                          ),
-                          backgroundColor: Colors.transparent,
-                          title: Text(
-                            _questions[index].title,
-                            style: Theme.of(context).textTheme.headline2,
-                            textAlign: TextAlign.left,
-                          ),
-                          children: [Text(_questions[index].content)],
-                        ),
-                      ));
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return SizedBox(
-                    height: 8.3,
+              flex: 10,
+              child: Observer(
+                builder: (_) {
+                  return ListView.separated(
+                    itemCount: widget._viewModel.questionList.length != null
+                        ? widget._viewModel.questionList.length
+                        : 0,
+                    clipBehavior: Clip.none,
+                    shrinkWrap: true,
+                    itemBuilder: (BuildContext context, int index) {
+                      return widget._viewModel.questionList.length != null
+                          ? Observer(
+                              builder: (_) {
+                                return Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(7.0),
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: widget._viewModel
+                                                .questionList[index].cardColor,
+                                            offset: Offset(-2.0, 0.0),
+                                            blurRadius: 0,
+                                          ),
+                                          BoxShadow(
+                                              color: Color(0xFF000000)
+                                                  .withOpacity(0.13),
+                                              offset: Offset(0, 2.0),
+                                              blurRadius: 14.0)
+                                        ]),
+                                    child: Center(
+                                      child: ExpansionTile(
+                                        trailing: IconButton(
+                                          onPressed: () {},
+                                          icon: Icon(Icons.keyboard_arrow_down,
+                                              size: 32),
+                                        ),
+                                        backgroundColor: Colors.transparent,
+                                        title: Text(
+                                          widget._viewModel.questionList[index]
+                                              .title,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline2,
+                                          textAlign: TextAlign.left,
+                                        ),
+                                        children: [
+                                          Text(
+                                            widget._viewModel
+                                                .questionList[index].content,
+                                          )
+                                        ],
+                                      ),
+                                    ));
+                              },
+                            )
+                          : Container(child: CircularProgressIndicator());
+                    },
+                    separatorBuilder: (BuildContext context, int index) {
+                      return SizedBox(
+                        height: 8.3,
+                      );
+                    },
                   );
                 },
-                itemCount: 20),
-          ),
+              )),
           Spacer(),
           SizedBox(
             height: 45,

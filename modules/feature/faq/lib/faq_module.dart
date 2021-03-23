@@ -18,7 +18,7 @@ class FAQModule extends ChildModule {
             singleton: false),
         Bind<FetchQuestionsUseCase>((_) => DefaultFetchQuestionsUseCase(),
             singleton: false),
-        Bind<QuestionViewModel>((_) => DefaultQuestionViewModel(),
+        Bind((_) => DefaultQuestionViewModel(),
             singleton: false),
 
         //Add question scene
