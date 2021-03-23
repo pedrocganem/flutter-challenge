@@ -13,13 +13,13 @@ mixin _$DefaultQuestionViewModel on DefaultQuestionViewModelBase, Store {
       Atom(name: 'DefaultQuestionViewModelBase.questionList');
 
   @override
-  ObservableList<QuestionModel> get questionList {
+  List<QuestionModel> get questionList {
     _$questionListAtom.reportRead();
     return super.questionList;
   }
 
   @override
-  set questionList(ObservableList<QuestionModel> value) {
+  set questionList(List<QuestionModel> value) {
     _$questionListAtom.reportWrite(value, super.questionList, () {
       super.questionList = value;
     });

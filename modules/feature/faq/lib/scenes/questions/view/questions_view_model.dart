@@ -12,11 +12,16 @@ abstract class DefaultQuestionViewModelBase with Store {
   final _useCase = Modular.get<FetchQuestionsUseCase>();
 
   @observable
-  ObservableList<QuestionModel> questionList = [QuestionModel(title: 'a', content: 'b', cardColor: Colors.green)].asObservable();
+  List<QuestionModel> questionList = [];
 
   fetchQuestions() async {
     final result = await _useCase.fetchQuestions('');
-    print(result.result);
+    print('fetchQuestions --------> ${result.result}');
+    questionList = result.result; 
+  }
+
+  Color convertCardColor(String hexColor) {
+    return Color(int.parse('0x$hexColor'));
   }
 
   void onAddButtonPressed() {

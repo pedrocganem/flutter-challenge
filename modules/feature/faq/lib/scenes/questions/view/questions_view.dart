@@ -13,8 +13,8 @@ class QuestionsView extends StatefulWidget {
 class _QuestionsViewState extends State<QuestionsView> {
   @override
   void initState() {
-    widget._viewModel.fetchQuestions();
     super.initState();
+    widget._viewModel.fetchQuestions();
   }
 
   @override
@@ -55,7 +55,10 @@ class _QuestionsViewState extends State<QuestionsView> {
                                         boxShadow: [
                                           BoxShadow(
                                             color: widget._viewModel
-                                                .questionList[index].cardColor,
+                                                  .convertCardColor(widget
+                                                      ._viewModel
+                                                      .questionList[index]
+                                                      .hexColor),
                                             offset: Offset(-2.0, 0.0),
                                             blurRadius: 0,
                                           ),
@@ -67,11 +70,8 @@ class _QuestionsViewState extends State<QuestionsView> {
                                         ]),
                                     child: Center(
                                       child: ExpansionTile(
-                                        trailing: IconButton(
-                                          onPressed: () {},
-                                          icon: Icon(Icons.keyboard_arrow_down,
-                                              size: 32),
-                                        ),
+                                        childrenPadding:
+                                            EdgeInsets.fromLTRB(15, 7, 15, 23),
                                         backgroundColor: Colors.transparent,
                                         title: Text(
                                           widget._viewModel.questionList[index]
@@ -93,7 +93,7 @@ class _QuestionsViewState extends State<QuestionsView> {
                             )
                           : Container(child: CircularProgressIndicator());
                     },
-                    separatorBuilder: (BuildContext context, int index) {
+                    separatorBuilder: (context, index) {
                       return SizedBox(
                         height: 8.3,
                       );

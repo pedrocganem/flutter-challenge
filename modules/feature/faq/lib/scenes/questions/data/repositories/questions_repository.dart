@@ -17,10 +17,11 @@ class DefaultQuestionRepository implements QuestionRepository {
   Future<Result<List<QuestionModel>, QuestionRepositoryError>> fetchQuestions(
       String query) async {
     final result = await _service.fetchQuestions(query);
+    print('repo -------> ${result.result}');
     if (result.error != null)
       return Result(error: QuestionRepositoryError.serviceError);
-    final questionList =
-        result.result.map((e) => QuestionModel.fromJson(json.decode(e)));
+    List<QuestionModel> questionList = List<QuestionModel>.from(
+        result.result.map((e) => QuestionModel.fromJson(json.decode(e))));
     return Result(result: questionList);
   }
 }

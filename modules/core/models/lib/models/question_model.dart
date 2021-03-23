@@ -1,23 +1,22 @@
-import 'dart:ui';
 
 class QuestionModel {
   String title;
   String content;
-  Color cardColor;
+  String hexColor;
 
-  QuestionModel({this.title, this.content, this.cardColor});
+  QuestionModel({this.title, this.content, this.hexColor});
 
   QuestionModel.fromJson(Map<String, dynamic> json) {
     title = json['title'];
     content = json['content'];
-    cardColor = json['card_color'];
+    hexColor = json['card_color'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['title'] = this.title;
     data['content'] = this.content;
-    data['card_color'] = this.cardColor;
+    data['card_color'] = this.hexColor;
     return data;
   }
 }
