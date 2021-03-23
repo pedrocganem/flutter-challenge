@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:foundation/foundation.dart';
 import '../domain/fetch_question_use_case.dart';
 import 'package:models/models.dart';
 import 'package:mobx/mobx.dart';
@@ -26,7 +27,7 @@ abstract class DefaultQuestionViewModelBase with Store {
 
   void onAddButtonPressed() {
     // TODO: implement onAddButtonPressed
-    //TODO: implement navigation to AddQuestionView
+    Modular.to.pushNamed(AppRoutes.ROUTE_ADD_QUESTION_VIEW);
   }
 
   void onSearchButtonPressed() {

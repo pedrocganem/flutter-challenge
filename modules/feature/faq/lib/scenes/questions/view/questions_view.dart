@@ -108,7 +108,9 @@ class _QuestionsViewState extends State<QuestionsView> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(6.0)),
               color: Theme.of(context).buttonColor,
-              onPressed: () {},
+              onPressed: () {
+                widget._viewModel.onAddButtonPressed();
+              },
               child: Row(
                 children: [
                   Spacer(),

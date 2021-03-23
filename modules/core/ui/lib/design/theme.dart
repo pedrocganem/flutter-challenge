@@ -47,6 +47,14 @@ class AppTheme {
           fontWeight: FontWeight.normal,
           fontSize: 22,
         ),
+        
+        //TextFormField input style
+        headline4: TextStyle(
+          color: AppColors.appLightPrimaryColor,
+          fontFamily: _fontFamily,
+          fontWeight: FontWeight.normal,
+          fontSize: 14
+        ),
 
         //Button text style
         button: TextStyle(
@@ -54,6 +62,14 @@ class AppTheme {
           fontFamily: _fontFamily,
           fontWeight: FontWeight.bold,
           fontSize: 16,
+        ),
+
+        //TextFormField label textStyle
+        subtitle1: TextStyle(
+          color: AppColors.appLightTextFormFieldLabelColor,
+          fontFamily: _fontFamily,
+          fontWeight: FontWeight.normal,
+          fontSize: 12,
         ),
       ),
     );
