@@ -114,6 +114,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.2"
+  hive:
+    dependency: transitive
+    description:
+      name: hive
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.4.4+1"
   http:
     dependency: transitive
     description:
@@ -156,6 +163,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.0-nullsafety.3"
+  models:
+    dependency: "direct main"
+    description:
+      path: "../../core/models"
+      relative: true
+    source: path
+    version: "0.0.1"
   path:
     dependency: transitive
     description:

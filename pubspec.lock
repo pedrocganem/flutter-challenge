@@ -209,13 +209,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_mobx:
-    dependency: "direct main"
-    description:
-      name: flutter_mobx
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.0+2"
   flutter_modular:
     dependency: "direct main"
     description:
@@ -261,6 +254,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.0"
+  hive:
+    dependency: transitive
+    description:
+      name: hive
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.4.4+1"
   http:
     dependency: transitive
     description:
@@ -346,7 +346,7 @@ packages:
     source: hosted
     version: "0.9.7"
   mobx:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: mobx
       url: "https://pub.dartlang.org"
@@ -359,6 +359,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.2"
+  models:
+    dependency: transitive
+    description:
+      path: "modules/core/models"
+      relative: true
+    source: path
+    version: "0.0.1"
   node_interop:
     dependency: transitive
     description:
@@ -388,7 +395,7 @@ packages:
     source: hosted
     version: "1.8.0-nullsafety.1"
   path_provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path_provider
       url: "https://pub.dartlang.org"
@@ -553,6 +560,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0-nullsafety.2"
+  splash_screen:
+    dependency: "direct main"
+    description:
+      path: "modules/feature/splash_screen"
+      relative: true
+    source: path
+    version: "0.0.1"
   stack_trace:
     dependency: transitive
     description:

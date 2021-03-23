@@ -1,14 +1,13 @@
-import 'package:FAQ/add_question/data/repositories/add_question_repository.dart';
-import 'package:FAQ/add_question/data/service/add_question_service.dart';
-import 'package:FAQ/add_question/domain/use_cases/add_question_use_case.dart';
-import 'package:FAQ/questions/data/repositories/questions_repository.dart';
-import 'package:FAQ/questions/data/services/questions_service.dart';
-import 'package:FAQ/questions/domain/fetch_question_use_case.dart';
-import 'package:FAQ/questions/view/questions_view.dart';
+import 'package:FAQ/scenes/add_question/data/repositories/add_question_repository.dart';
+import 'package:FAQ/scenes/add_question/data/service/add_question_service.dart';
+import 'package:FAQ/scenes/add_question/domain/use_cases/add_question_use_case.dart';
+import 'package:FAQ/scenes/questions/data/repositories/questions_repository.dart';
+import 'package:FAQ/scenes/questions/data/services/questions_service.dart';
+import 'package:FAQ/scenes/questions/domain/fetch_question_use_case.dart';
+import 'package:FAQ/scenes/questions/view/questions_view.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:FAQ/questions/view/questions_view_model.dart';
+import 'package:FAQ/scenes/questions/view/questions_view_model.dart';
 import 'package:foundation/constants/routes.dart';
-
 
 class FAQModule extends ChildModule {
   @override
@@ -23,18 +22,19 @@ class FAQModule extends ChildModule {
             singleton: false),
 
         //Add question scene
-        Bind<AddQuestionService>((_) => DefaultAddQuestionService(),
-            singleton: false),
-        Bind<AddQuestionRepository>((_) => DefaultAddQuestionRepository(),
-            singleton: false),
-        Bind<AddQuestionUseCase>((_) => DefaultAddQuestionUseCase(),
-            singleton: false)
+        // Bind<AddQuestionService>((_) => DefaultAddQuestionService(),
+        //     singleton: false),
+        // Bind<AddQuestionRepository>((_) => DefaultAddQuestionRepository(),
+        //     singleton: false),
+        // Bind<AddQuestionUseCase>((_) => DefaultAddQuestionUseCase(),
+        //     singleton: false)
         //TODO bind ViewModel
       ];
 
   @override
   // TODO: implement routers
   List<ModularRouter> get routers => [
-    ModularRouter(AppRoutes.ROUTE_ROOT_VIEW, child: (_, args) => QuestionsView())
-  ];
+        ModularRouter(AppRoutes.ROUTE_QUESTIONS_VIEW,
+            child: (_, args) => QuestionsView())
+      ];
 }

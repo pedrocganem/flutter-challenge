@@ -24,8 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_modular: 
-  mobx:
-  flutter_mobx:
+  path_provider:
 
   ui:
     path: "modules/core/ui/"
@@ -38,6 +37,9 @@ dependencies:
 
   FAQ:
     path: "modules/feature/faq/"
+
+  splash_screen:
+    path: "modules/feature/splash_screen/"
   
 
   # The following adds the Cupertino Icons font to your application.

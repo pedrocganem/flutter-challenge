@@ -21,6 +21,9 @@ dependencies:
 
   ui:
     path: "../../../modules/core/ui"
+  
+  models:
+    path: "../../../modules/core/models/"
 
 dev_dependencies:
   flutter_test:
