@@ -9,7 +9,9 @@ class LocalSharedPreferencesWrapper implements SharedPreferencesWrapper {
   @override
   Future<bool> isFirstLaunch() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getBool('is_first_launch') == true;
+    final cachedValue = prefs.getBool('is_first_launch');
+    print(cachedValue);
+    return cachedValue != true;
   }
 
   @override
