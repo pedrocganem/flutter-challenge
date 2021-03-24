@@ -19,9 +19,7 @@ class DefaultSplashScreenRepository implements SplashScreenRepository {
 
   @override
   createQuestion(QuestionModel question) async {
-    print('question ------> $question');
     final encodedQuestion = json.encode(question.toJson());
-    print('encodedQuestion -------->  $encodedQuestion');
     await _service.createQuestion(encodedQuestion);
   }
 

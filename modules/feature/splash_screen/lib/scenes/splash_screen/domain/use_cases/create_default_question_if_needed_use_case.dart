@@ -65,9 +65,7 @@ class DefaultCreateDefaultQuestionsIfNeededUseCase
               'Sim! A Snow está sempre buscando se manter atualizada sobre novas tecnologias e sempre está aberta à novas ideias e sugestões. Fomos umas das primeiras em Curitiba a adotar o Flutter para projetos em produção e estamos sempre buscando por inovações e melhorias.',
           hexColor: "FFFF7074"),
     ];
-    print(defaultQuestions);
     defaultQuestions.forEach((element)  {
-      print('forEach -------> $element');
        _repository.createQuestion(element);
     });
   }

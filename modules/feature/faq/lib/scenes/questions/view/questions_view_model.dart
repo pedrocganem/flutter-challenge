@@ -17,7 +17,6 @@ abstract class DefaultQuestionViewModelBase with Store {
 
   fetchQuestions() async {
     final result = await _useCase.fetchQuestions('');
-    print('fetchQuestions --------> ${result.result}');
     questionList = result.result;
   }
 
@@ -25,7 +24,7 @@ abstract class DefaultQuestionViewModelBase with Store {
     return Color(int.parse('0x$hexColor'));
   }
 
-  
+
 
   void onAddButtonPressed() {
     // TODO: implement onAddButtonPressed

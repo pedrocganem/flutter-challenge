@@ -13,7 +13,6 @@ class LocalQuestionsService implements QuestionService {
   @override
   Future<Result<List<String>, QuestionServiceError>> fetchQuestions(String query) async {
     final result = await _questionDB.fetchQuestions(query);
-    print('service ------> $result');
     if (result == null) return Result(error: QuestionServiceError.dbError);
     return Result(result: result, error: null);
   }

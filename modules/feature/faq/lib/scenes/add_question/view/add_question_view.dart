@@ -61,8 +61,6 @@ class _AddQuestionViewState extends State<AddQuestionView> {
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
                               onTap: () {
-                                print(
-                                    'EU TO AQUI CARAIO AsldkABDUAHID OASJPDLASK BSJKL');
                                 widget._viewModel.onColorChosen(index);
                               },
                               child: Observer(builder: (_) {
