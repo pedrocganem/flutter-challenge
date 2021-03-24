@@ -20,7 +20,6 @@ class _QuestionsViewState extends State<QuestionsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -58,10 +57,10 @@ class _QuestionsViewState extends State<QuestionsView> {
                                         boxShadow: [
                                           BoxShadow(
                                             color: widget._viewModel
-                                                  .convertCardColor(widget
-                                                      ._viewModel
-                                                      .questionList[index]
-                                                      .hexColor),
+                                                .convertCardColor(widget
+                                                    ._viewModel
+                                                    .questionList[index]
+                                                    .hexColor),
                                             offset: Offset(-2.0, 0.0),
                                             blurRadius: 0,
                                           ),
@@ -107,26 +106,28 @@ class _QuestionsViewState extends State<QuestionsView> {
           Spacer(),
           SizedBox(
             height: 45,
-            child: RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(6.0)),
-              color: Theme.of(context).buttonColor,
-              onPressed: () {
-                widget._viewModel.onAddButtonPressed();
-              },
-              child: Row(
-                children: [
-                  Spacer(),
-                  Text(
-                    'Adicionar Pergunta',
-                    style: Theme.of(context).textTheme.button,
-                    textAlign: TextAlign.center,
-                  ),
-                  Spacer(),
-                  Icon(Icons.add, color: Theme.of(context).accentColor),
-                ],
-              ),
-            ),
+            child: Builder(builder: (BuildContext context) {
+              return RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6.0)),
+                color: Theme.of(context).buttonColor,
+                onPressed: () {
+                  widget._viewModel.onAddButtonPressed(Scaffold.of(context));
+                },
+                child: Row(
+                  children: [
+                    Spacer(),
+                    Text(
+                      'Adicionar Pergunta',
+                      style: Theme.of(context).textTheme.button,
+                      textAlign: TextAlign.center,
+                    ),
+                    Spacer(),
+                    Icon(Icons.add, color: Theme.of(context).accentColor),
+                  ],
+                ),
+              );
+            }),
           ),
         ]),
       ),

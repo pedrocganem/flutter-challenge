@@ -24,15 +24,15 @@ abstract class DefaultQuestionViewModelBase with Store {
     return Color(int.parse('0x$hexColor'));
   }
 
-
-
-  void onAddButtonPressed() {
-    // TODO: implement onAddButtonPressed
-    Modular.to.pushNamed(
-        AppRoutes.ROUTE_QUESTIONS_VIEW + AppRoutes.ROUTE_ADD_QUESTION_VIEW).then((value) {
-          fetchQuestions();
-        });
-    
+  void onAddButtonPressed(ScaffoldState state) {
+    Modular.to
+        .pushNamed(
+            AppRoutes.ROUTE_QUESTIONS_VIEW + AppRoutes.ROUTE_ADD_QUESTION_VIEW)
+        .then((value) {
+      fetchQuestions();
+      final snackBar = SnackBar(content: Text('SALVE VOLTEI CARAI'));
+      state.showSnackBar(snackBar);
+    });
   }
 
   void onSearchButtonPressed() {
