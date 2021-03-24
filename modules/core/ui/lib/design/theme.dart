@@ -64,6 +64,14 @@ class AppTheme {
           fontSize: 16,
         ),
 
+        //TextFormField hintText textStyle
+        overline: TextStyle(
+          color: AppColors.appLightSecondaryColor,
+          fontFamily: _fontFamily,
+          fontWeight: FontWeight.w600,
+          fontSize: 14
+        ),
+
         //TextFormField label textStyle
         subtitle1: TextStyle(
           color: AppColors.appLightTextFormFieldLabelColor,

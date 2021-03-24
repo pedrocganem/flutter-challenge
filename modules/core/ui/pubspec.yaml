@@ -12,6 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts:
+  mobx:
+  flutter_mobx:
 
 dev_dependencies:
   flutter_test:
