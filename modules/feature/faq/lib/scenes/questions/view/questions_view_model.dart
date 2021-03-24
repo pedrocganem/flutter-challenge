@@ -15,8 +15,23 @@ abstract class DefaultQuestionViewModelBase with Store {
   @observable
   List<QuestionModel> questionList = [];
 
+  @observable
+  String searchKeyword = '';
+
+  @observable
+  bool isSearchBarEnabled = false;
+
+  @action
+  onInputSearchKeyword(String newValue) => searchKeyword = newValue;
+
+  @action
+  bool toggleSearchBar() => isSearchBarEnabled = !isSearchBarEnabled;
+
+  @computed
+  bool get isSearchMode => isSearchBarEnabled;
+
   fetchQuestions() async {
-    final result = await _useCase.fetchQuestions('');
+    final result = await _useCase.fetchQuestions(searchKeyword);
     questionList = result.result;
   }
 
@@ -30,12 +45,9 @@ abstract class DefaultQuestionViewModelBase with Store {
             AppRoutes.ROUTE_QUESTIONS_VIEW + AppRoutes.ROUTE_ADD_QUESTION_VIEW)
         .then((value) {
       fetchQuestions();
+      //TODO implement snackBar layout
       final snackBar = SnackBar(content: Text('SALVE VOLTEI CARAI'));
       state.showSnackBar(snackBar);
     });
-  }
-
-  void onSearchButtonPressed() {
-    // TODO: implement onSearchButtonPressed
   }
 }

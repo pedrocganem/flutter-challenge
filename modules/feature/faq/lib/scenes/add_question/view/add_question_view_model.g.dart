@@ -63,15 +63,6 @@ mixin _$AddQuestionViewModel on _AddQuestionViewModelBase, Store {
     });
   }
 
-  final _$onAddButtonPressedAsyncAction =
-      AsyncAction('_AddQuestionViewModelBase.onAddButtonPressed');
-
-  @override
-  Future onAddButtonPressed() {
-    return _$onAddButtonPressedAsyncAction
-        .run(() => super.onAddButtonPressed());
-  }
-
   final _$_AddQuestionViewModelBaseActionController =
       ActionController(name: '_AddQuestionViewModelBase');
 
@@ -92,17 +83,6 @@ mixin _$AddQuestionViewModel on _AddQuestionViewModelBase, Store {
         .startAction(name: '_AddQuestionViewModelBase.onContentChange');
     try {
       return super.onContentChange(newValue);
-    } finally {
-      _$_AddQuestionViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic onColorChosen(int index) {
-    final _$actionInfo = _$_AddQuestionViewModelBaseActionController
-        .startAction(name: '_AddQuestionViewModelBase.onColorChosen');
-    try {
-      return super.onColorChosen(index);
     } finally {
       _$_AddQuestionViewModelBaseActionController.endAction(_$actionInfo);
     }

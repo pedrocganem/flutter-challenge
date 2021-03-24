@@ -45,7 +45,6 @@ abstract class _AddQuestionViewModelBase with Store {
   }
 
   
-  @computed
   bool isColorSelected(int index) => index == selectedColorIndex;
 
   @computed
