@@ -4,13 +4,14 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 class SnowQuestionAppBar extends StatelessWidget {
   final bool isSearchBarEnabled;
   final Function() onPressed;
+  final Function() onExitSearch;
   final Function() onStartTyping;
   final Function(String) onChanged;
   const SnowQuestionAppBar(
       {this.isSearchBarEnabled,
       this.onPressed,
       this.onStartTyping,
-      this.onChanged});
+      this.onChanged, this.onExitSearch});
 
   @override
   Widget build(BuildContext context) {
@@ -38,22 +39,24 @@ class SnowQuestionAppBar extends StatelessWidget {
                           color: Colors.white.withOpacity(0.8)),
                     ),
                     Expanded(
-                      child: TextFormField(
-                        textAlignVertical: TextAlignVertical.center,
-                        style: Theme.of(context).textTheme.overline,
-                        onChanged: onChanged,
-                        decoration: InputDecoration(
-                          hintText: 'Pesquisar pergunta',
-                          hintStyle: Theme.of(context).textTheme.subtitle1,
-                          contentPadding: EdgeInsets.only(bottom: 12),
-                          errorBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          disabledBorder: InputBorder.none,
-                          focusedErrorBorder: InputBorder.none,
-                          border: InputBorder.none,
-                        ),
-                      ),
+                      child: Observer(builder: (_) {
+                        return TextFormField(
+                          textAlignVertical: TextAlignVertical.center,
+                          style: Theme.of(context).textTheme.overline,
+                          onChanged: onChanged,
+                          decoration: InputDecoration(
+                            hintText: 'Pesquisar pergunta',
+                            hintStyle: Theme.of(context).textTheme.subtitle1,
+                            contentPadding: EdgeInsets.only(bottom: 12),
+                            errorBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                            focusedErrorBorder: InputBorder.none,
+                            border: InputBorder.none,
+                          ),
+                        );
+                      }),
                     ),
                     Container(
                       child: VerticalDivider(
@@ -68,7 +71,7 @@ class SnowQuestionAppBar extends StatelessWidget {
                       child: IconButton(
                         padding: EdgeInsets.zero,
                         splashRadius: 24,
-                        onPressed: onPressed,
+                        onPressed: onExitSearch,
                         icon: Icon(
                           Icons.close,
                           color: Colors.white.withOpacity(0.8),

@@ -21,13 +21,13 @@ mixin _$DefaultQuestionViewModel on DefaultQuestionViewModelBase, Store {
       Atom(name: 'DefaultQuestionViewModelBase.questionList');
 
   @override
-  List<QuestionModel> get questionList {
+  ObservableList<QuestionModel> get questionList {
     _$questionListAtom.reportRead();
     return super.questionList;
   }
 
   @override
-  set questionList(List<QuestionModel> value) {
+  set questionList(ObservableList<QuestionModel> value) {
     _$questionListAtom.reportWrite(value, super.questionList, () {
       super.questionList = value;
     });
@@ -69,11 +69,11 @@ mixin _$DefaultQuestionViewModel on DefaultQuestionViewModelBase, Store {
       ActionController(name: 'DefaultQuestionViewModelBase');
 
   @override
-  dynamic onInputSearchKeyword(String newValue) {
+  dynamic searchInputDidChange(String newValue) {
     final _$actionInfo = _$DefaultQuestionViewModelBaseActionController
         .startAction(name: 'DefaultQuestionViewModelBase.onInputSearchKeyword');
     try {
-      return super.onInputSearchKeyword(newValue);
+      return super.searchInputDidChange(newValue);
     } finally {
       _$DefaultQuestionViewModelBaseActionController.endAction(_$actionInfo);
     }

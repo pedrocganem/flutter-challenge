@@ -25,8 +25,12 @@ class _QuestionsViewState extends State<QuestionsView> {
         return Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           appBar: SnowQuestionAppBar(
-              onChanged: widget._viewModel.onInputSearchKeyword,
+              onChanged: widget._viewModel.searchInputDidChange,
               isSearchBarEnabled: widget._viewModel.isSearchBarEnabled,
+              onExitSearch: () {
+                widget._viewModel.toggleSearchBar();
+                widget._viewModel.onExitSearchMode();
+              },
               onPressed: () {
                 widget._viewModel.toggleSearchBar();
                 print(widget._viewModel.isSearchBarEnabled);
@@ -39,7 +43,7 @@ class _QuestionsViewState extends State<QuestionsView> {
                   child: Observer(
                     builder: (_) {
                       return ListView.separated(
-                        itemCount: widget._viewModel.questionList.length != null
+                        itemCount: widget._viewModel.isLoadingComplete
                             ? widget._viewModel.questionList.length
                             : 0,
                         clipBehavior: Clip.none,

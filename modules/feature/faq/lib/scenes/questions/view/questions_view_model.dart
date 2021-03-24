@@ -13,7 +13,7 @@ abstract class DefaultQuestionViewModelBase with Store {
   final _useCase = Modular.get<FetchQuestionsUseCase>();
 
   @observable
-  List<QuestionModel> questionList = [];
+  ObservableList<QuestionModel> questionList;
 
   @observable
   String searchKeyword = '';
@@ -22,17 +22,29 @@ abstract class DefaultQuestionViewModelBase with Store {
   bool isSearchBarEnabled = false;
 
   @action
-  onInputSearchKeyword(String newValue) => searchKeyword = newValue;
+  searchInputDidChange(String newValue) {
+    searchKeyword = newValue;
+    fetchQuestions();
+  }
 
   @action
   bool toggleSearchBar() => isSearchBarEnabled = !isSearchBarEnabled;
 
+  @action
+  onExitSearchMode() {
+    searchKeyword = '';
+    fetchQuestions();
+  }
+
   @computed
   bool get isSearchMode => isSearchBarEnabled;
 
+  @computed
+  bool get isLoadingComplete => questionList != null;
+
   fetchQuestions() async {
     final result = await _useCase.fetchQuestions(searchKeyword);
-    questionList = result.result;
+    questionList = result.result.asObservable();
   }
 
   Color convertCardColor(String hexColor) {
@@ -46,7 +58,12 @@ abstract class DefaultQuestionViewModelBase with Store {
         .then((value) {
       fetchQuestions();
       //TODO implement snackBar layout
-      final snackBar = SnackBar(content: Text('SALVE VOLTEI CARAI'));
+      final snackBar = SnackBar(
+          content: ListTile(
+            dense: true,
+        leading: Icon(Icons.check_circle_rounded, color: Colors.white),
+        title: Text('Pergunta adicionada com sucesso'),
+      ));
       state.showSnackBar(snackBar);
     });
   }
