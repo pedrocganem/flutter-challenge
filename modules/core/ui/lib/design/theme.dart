@@ -71,6 +71,14 @@ class AppTheme {
           fontWeight: FontWeight.normal,
           fontSize: 12,
         ),
+
+        //AddQuestion color subtitle
+        subtitle2: TextStyle(
+          color: AppColors.appLightTextFormFieldLabelColor,
+          fontFamily: _fontFamily,
+          fontWeight: FontWeight.bold,
+          fontSize: 12,
+        )
       ),
     );
   }

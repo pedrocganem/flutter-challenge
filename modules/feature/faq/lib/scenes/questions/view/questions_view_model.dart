@@ -18,16 +18,22 @@ abstract class DefaultQuestionViewModelBase with Store {
   fetchQuestions() async {
     final result = await _useCase.fetchQuestions('');
     print('fetchQuestions --------> ${result.result}');
-    questionList = result.result; 
+    questionList = result.result;
   }
 
   Color convertCardColor(String hexColor) {
     return Color(int.parse('0x$hexColor'));
   }
 
+  
+
   void onAddButtonPressed() {
     // TODO: implement onAddButtonPressed
-    Modular.to.pushNamed(AppRoutes.ROUTE_ADD_QUESTION_VIEW);
+    Modular.to.pushNamed(
+        AppRoutes.ROUTE_QUESTIONS_VIEW + AppRoutes.ROUTE_ADD_QUESTION_VIEW).then((value) {
+          fetchQuestions();
+        });
+    
   }
 
   void onSearchButtonPressed() {

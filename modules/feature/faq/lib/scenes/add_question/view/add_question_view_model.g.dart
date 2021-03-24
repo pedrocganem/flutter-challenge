@@ -17,18 +17,49 @@ mixin _$AddQuestionViewModel on _AddQuestionViewModelBase, Store {
               name: '_AddQuestionViewModelBase.isButtonEnabled'))
           .value;
 
-  final _$questionAtom = Atom(name: '_AddQuestionViewModelBase.question');
+  final _$titleAtom = Atom(name: '_AddQuestionViewModelBase.title');
 
   @override
-  QuestionModel get question {
-    _$questionAtom.reportRead();
-    return super.question;
+  String get title {
+    _$titleAtom.reportRead();
+    return super.title;
   }
 
   @override
-  set question(QuestionModel value) {
-    _$questionAtom.reportWrite(value, super.question, () {
-      super.question = value;
+  set title(String value) {
+    _$titleAtom.reportWrite(value, super.title, () {
+      super.title = value;
+    });
+  }
+
+  final _$contentAtom = Atom(name: '_AddQuestionViewModelBase.content');
+
+  @override
+  String get content {
+    _$contentAtom.reportRead();
+    return super.content;
+  }
+
+  @override
+  set content(String value) {
+    _$contentAtom.reportWrite(value, super.content, () {
+      super.content = value;
+    });
+  }
+
+  final _$selectedColorIndexAtom =
+      Atom(name: '_AddQuestionViewModelBase.selectedColorIndex');
+
+  @override
+  int get selectedColorIndex {
+    _$selectedColorIndexAtom.reportRead();
+    return super.selectedColorIndex;
+  }
+
+  @override
+  set selectedColorIndex(int value) {
+    _$selectedColorIndexAtom.reportWrite(value, super.selectedColorIndex, () {
+      super.selectedColorIndex = value;
     });
   }
 
@@ -36,15 +67,53 @@ mixin _$AddQuestionViewModel on _AddQuestionViewModelBase, Store {
       AsyncAction('_AddQuestionViewModelBase.onAddButtonPressed');
 
   @override
-  Future onAddButtonPressed(String title, String content, String hexColor) {
+  Future onAddButtonPressed() {
     return _$onAddButtonPressedAsyncAction
-        .run(() => super.onAddButtonPressed(title, content, hexColor));
+        .run(() => super.onAddButtonPressed());
+  }
+
+  final _$_AddQuestionViewModelBaseActionController =
+      ActionController(name: '_AddQuestionViewModelBase');
+
+  @override
+  dynamic onTitleChange(String newValue) {
+    final _$actionInfo = _$_AddQuestionViewModelBaseActionController
+        .startAction(name: '_AddQuestionViewModelBase.onTitleChange');
+    try {
+      return super.onTitleChange(newValue);
+    } finally {
+      _$_AddQuestionViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic onContentChange(String newValue) {
+    final _$actionInfo = _$_AddQuestionViewModelBaseActionController
+        .startAction(name: '_AddQuestionViewModelBase.onContentChange');
+    try {
+      return super.onContentChange(newValue);
+    } finally {
+      _$_AddQuestionViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic onColorChosen(int index) {
+    final _$actionInfo = _$_AddQuestionViewModelBaseActionController
+        .startAction(name: '_AddQuestionViewModelBase.onColorChosen');
+    try {
+      return super.onColorChosen(index);
+    } finally {
+      _$_AddQuestionViewModelBaseActionController.endAction(_$actionInfo);
+    }
   }
 
   @override
   String toString() {
     return '''
-question: ${question},
+title: ${title},
+content: ${content},
+selectedColorIndex: ${selectedColorIndex},
 isButtonEnabled: ${isButtonEnabled}
     ''';
   }

@@ -8,6 +8,5 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final provider = await path_provider.getApplicationDocumentsDirectory();
   Hive.init(provider.path);
-  await Hive.openBox('questions');
   runApp(ModularApp(module: AppModule()));
 }

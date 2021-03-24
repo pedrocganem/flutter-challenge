@@ -20,8 +20,11 @@ class _QuestionsViewState extends State<QuestionsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: true,
         brightness: Theme.of(context).appBarTheme.brightness,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -120,7 +123,7 @@ class _QuestionsViewState extends State<QuestionsView> {
                     textAlign: TextAlign.center,
                   ),
                   Spacer(),
-                  Icon(Icons.add),
+                  Icon(Icons.add, color: Theme.of(context).accentColor),
                 ],
               ),
             ),
