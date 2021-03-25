@@ -15,32 +15,33 @@ void testQuestionView() {
   fakeModule.load(isLoadDependency: false);
   testWidgets("QuestionView when one card is opened and searchBar is hidden",
       (WidgetTester tester) async {
-    await tester.setScreenSize(height: 960, width: 540);
+    await tester.setScreenSize(height: 896, width: 414);
     await tester.pumpWidget(UIUtils.makeTestable(QuestionsView()));
     await tester.tap(find.byType(ExpansionTile).first);
     await tester.pumpAndSettle();
 
-    expect(
+    await expectLater(
         find.byType(QuestionsView),
         matchesGoldenFile(
             "snapshot/questions_view_when_search_bar_is_hidden.png"));
   });
   testWidgets("s when one card is opened and searchBar is visible",
       (WidgetTester tester) async {
-    await tester.setScreenSize(height: 960, width: 540);
+    await tester.setScreenSize(height: 896, width: 414);
     viewModelStub.isSearchBarEnabled = true;
     await tester.pumpWidget(UIUtils.makeTestable(QuestionsView()));
     await tester.tap(find.byType(ExpansionTile).first);
     await tester.pumpAndSettle();
-    expect(find.byType(QuestionsView),
+    await tester.pump();
+    await expectLater(find.byType(QuestionsView),
         matchesGoldenFile("snapshot/questions_view_when_search_bar_is_opened.png"));
   });
 }
 
 extension SetScreenSize on WidgetTester {
   Future<void> setScreenSize(
-      {double width = 540,
-      double height = 960,
+      {double width = 414,
+      double height = 896,
       double pixelDensity = 1}) async {
     final size = Size(width, height);
     await this.binding.setSurfaceSize(size);

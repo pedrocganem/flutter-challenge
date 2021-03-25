@@ -14,7 +14,7 @@ void testAddQuestionView() {
   fakeModule.load(isLoadDependency: false);
   testWidgets("AddQuestionView when fields are not valid",
       (WidgetTester tester) async {
-    await tester.setScreenSize(height: 960, width: 540);
+    await tester.setScreenSize(height: 896, width: 414);
     viewModelStub.selectedColorIndex = null;
     viewModelStub.content = '';
     viewModelStub.title = '';
@@ -26,7 +26,7 @@ void testAddQuestionView() {
   });
   testWidgets("AddQuestionView when fields are valid",
       (WidgetTester tester) async {
-    await tester.setScreenSize(height: 960, width: 540);
+    await tester.setScreenSize(height: 896, width: 414);
     viewModelStub.selectedColorIndex = 0;
     viewModelStub.title = 'dummy';
     viewModelStub.content = 'dummy';
@@ -40,8 +40,8 @@ void testAddQuestionView() {
 
 extension SetScreenSize on WidgetTester {
   Future<void> setScreenSize(
-      {double width = 540,
-      double height = 960,
+      {double width = 414,
+      double height = 896,
       double pixelDensity = 1}) async {
     final size = Size(width, height);
     await this.binding.setSurfaceSize(size);

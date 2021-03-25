@@ -13,11 +13,12 @@ dependencies:
     sdk: flutter
   flutter_modular:
 
+  ui:
+    path: "../../../modules/core/ui"
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  ui:
-    path: "../../../modules/core/ui"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
