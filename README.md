@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/pedrocganem/flutter-challenge/branch/master/graph/badge.svg?token=HVHZLE7GIT)](https://codecov.io/gh/pedrocganem/flutter-challenge) https://github.com/pedrocganem/flutter-challenge/actions/CI/badge.svg
+
 # flutterChallenge
 
 A new Flutter project.
