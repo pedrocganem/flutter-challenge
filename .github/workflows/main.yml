@@ -30,21 +30,21 @@ jobs:
         name: codecov-umbrella # optional
         fail_ci_if_error: true # optional (default = false)
         verbose: true 
-  # build-iOS:
-  #  runs-on: macos-latest
-  #  steps:
-  #   - uses: actions/checkout@v2
-  #   - uses: subosito/flutter-action@v1
-  #     with:
-  #       flutter-version: '1.22.4'
-  #   - run: flutter pub get
-  #   - run: flutter build ios --release --no-codesign
-  # build-android:
-  #  runs-on: macos-latest
-  #  steps:
-  #   - uses: actions/checkout@v2
-  #   - uses: subosito/flutter-action@v1
-  #     with:
-  #       flutter-version: '1.22.4'
-  #   - run: flutter pub get
-  #   - run: flutter build apk
+  build-iOS:
+   runs-on: macos-latest
+   steps:
+    - uses: actions/checkout@v2
+    - uses: subosito/flutter-action@v1
+      with:
+        flutter-version: '1.22.4'
+    - run: flutter pub get
+    - run: flutter build ios --release --no-codesign
+  build-android:
+   runs-on: macos-latest
+   steps:
+    - uses: actions/checkout@v2
+    - uses: subosito/flutter-action@v1
+      with:
+        flutter-version: '1.22.4'
+    - run: flutter pub get
+    - run: flutter build apk
