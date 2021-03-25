@@ -2,6 +2,7 @@ import 'package:FAQ/scenes/add_question/view/add_question_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:foundation/foundation.dart';
 import 'package:ui/ui.dart';
 
 class AddQuestionView extends StatefulWidget {
@@ -15,7 +16,8 @@ class _AddQuestionViewState extends State<AddQuestionView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SnowFAQAppBar(title: 'Adicionar Pergunta').appBar(context),
+      appBar: SnowFAQAppBar(title: AppStrings.addQuestionAppBarTitle)
+          .appBar(context),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
         child: Container(
@@ -34,21 +36,21 @@ class _AddQuestionViewState extends State<AddQuestionView> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                 child: SnowFAQTextFormField(widget._viewModel.onTitleChange, 1,
-                        'Título da Pergunta', true)
+                        AppStrings.addQuestionTitleTextFieldLabel, true)
                     .textFormField(context),
               ),
               Spacer(),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: SnowFAQTextFormField(
-                        widget._viewModel.onContentChange, 4, 'Resposta', false)
+                child: SnowFAQTextFormField(widget._viewModel.onContentChange,
+                        4, AppStrings.addQuestionContentTextFieldLabel, false)
                     .textFormField(context),
               ),
               Spacer(),
               Column(
                 children: [
                   Text(
-                    'Cor',
+                    AppStrings.addQuestionColorLabel,
                     style: Theme.of(context).textTheme.subtitle2,
                   ),
                   SizedBox(height: 8),
@@ -82,7 +84,6 @@ class _AddQuestionViewState extends State<AddQuestionView> {
                   ),
                 ],
               ),
-
               Spacer(),
               Container(
                   height: 45,
@@ -97,7 +98,7 @@ class _AddQuestionViewState extends State<AddQuestionView> {
                             : null,
                         child: Row(children: [
                           Spacer(),
-                          Text('Adicionar',
+                          Text(AppStrings.addQuestionButtonTitle,
                               style: widget._viewModel.isButtonEnabled
                                   ? Theme.of(context).textTheme.button
                                   : Theme.of(context).textTheme.headline2),

@@ -33,7 +33,6 @@ class _QuestionsViewState extends State<QuestionsView> {
               },
               onPressed: () {
                 widget._viewModel.toggleSearchBar();
-                print(widget._viewModel.isSearchBarEnabled);
               }).build(context),
           body: Padding(
             padding: const EdgeInsets.fromLTRB(16, 25, 16, 40),

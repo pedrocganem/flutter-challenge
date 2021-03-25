@@ -75,7 +75,6 @@ abstract class DefaultQuestionViewModelBase
             AppRoutes.ROUTE_QUESTIONS_VIEW + AppRoutes.ROUTE_ADD_QUESTION_VIEW)
         .then((value) {
       fetchQuestions();
-      //TODO implement snackBar layout
       final snackBar = SnackBar(
           content: ListTile(
         dense: true,

@@ -14,8 +14,6 @@ class AppWidget extends StatelessWidget {
       initialRoute: '/',
       navigatorKey: Modular.navigatorKey,
       onGenerateRoute: Modular.generateRoute,
-      //TODO implement navigator observers
-      //TODO implement onUnknown route
     );
   }
 }
