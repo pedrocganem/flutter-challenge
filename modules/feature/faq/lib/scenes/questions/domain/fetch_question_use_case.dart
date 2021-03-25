@@ -16,7 +16,7 @@ class DefaultFetchQuestionsUseCase implements FetchQuestionsUseCase {
   Future<Result<List<QuestionModel>, QuestionUseCaseError>> fetchQuestions(
       String query) async {
     final result =  await _repository.fetchQuestions(query);
-    if (result.error != null)
+    if (result.result == null)
       return Result(error: QuestionUseCaseError.repositoryError);
     final questionList = result.result;
     return Result(result: questionList);

@@ -4,10 +4,29 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 part 'add_question_view_model.g.dart';
 
+abstract class AbstractAddQuestionViewModel {
+  //Methods
+  onTitleChange(String newValue);
+  onContentChange(String newValue);
+  onColorChosen(int index);
+  Color colorAtIndex(int index);
+  bool isColorSelected(int index);
+  onAddButtonPressed();
+  bool get isButtonEnabled;
+
+  //Observables
+  List<String> hexColorList;
+  int selectedColorIndex;
+  String title;
+  String content;
+}
+
 class AddQuestionViewModel = _AddQuestionViewModelBase
     with _$AddQuestionViewModel;
 
-abstract class _AddQuestionViewModelBase with Store {
+abstract class _AddQuestionViewModelBase
+    with Store
+    implements AbstractAddQuestionViewModel {
   final _useCase = Modular.get<AddQuestionUseCase>();
 
   List<String> hexColorList = ['FF46C9A7', 'FFFF7074', 'FFFFBE00', 'FF10159A'];
@@ -27,7 +46,6 @@ abstract class _AddQuestionViewModelBase with Store {
   @action
   onContentChange(String newValue) => content = newValue;
 
- 
   onColorChosen(int index) {
     selectedColorIndex = index;
   }
@@ -44,12 +62,9 @@ abstract class _AddQuestionViewModelBase with Store {
     return Color(hexCode);
   }
 
-  
   bool isColorSelected(int index) => index == selectedColorIndex;
 
   @computed
   bool get isButtonEnabled =>
-      selectedColorIndex != null &&
-      title != null &&
-      content != null;
+      selectedColorIndex != null && title != '' && content != '';
 }

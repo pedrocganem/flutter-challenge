@@ -5,7 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:ui/ui.dart';
 
 class AddQuestionView extends StatefulWidget {
-  final _viewModel = Modular.get<AddQuestionViewModel>();
+  final _viewModel = Modular.get<AbstractAddQuestionViewModel>();
 
   @override
   _AddQuestionViewState createState() => _AddQuestionViewState();

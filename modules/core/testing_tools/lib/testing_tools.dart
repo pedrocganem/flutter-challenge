@@ -1,7 +1,7 @@
 library testing_tools;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'package:testing_tools/mocks/generic_app_module_fake.dart'
+    show GenericAppModuleFake;
+export 'package:testing_tools/mocks/generic_app_module_stub.dart'
+    show GenericAppModuleStub;
+export 'package:testing_tools/utils/ui/ui.dart' show UIUtils;

@@ -6,10 +6,28 @@ import 'package:models/models.dart';
 import 'package:mobx/mobx.dart';
 part 'questions_view_model.g.dart';
 
+abstract class QuestionViewModel {
+  //Methods
+  fetchQuestions();
+  Color convertCardColor(String hexColor);
+  bool toggleSearchBar();
+  onExitSearchMode();
+  searchInputDidChange(String newValue);
+  onAddButtonPressed(ScaffoldState state);
+  bool get isLoadingComplete;
+
+  //Observables
+  bool isSearchBarEnabled;
+  ObservableList<QuestionModel> questionList;
+  String searchKeyword;
+}
+
 class DefaultQuestionViewModel = DefaultQuestionViewModelBase
     with _$DefaultQuestionViewModel;
 
-abstract class DefaultQuestionViewModelBase with Store {
+abstract class DefaultQuestionViewModelBase
+    with Store
+    implements QuestionViewModel {
   final _useCase = Modular.get<FetchQuestionsUseCase>();
 
   @observable
@@ -51,7 +69,7 @@ abstract class DefaultQuestionViewModelBase with Store {
     return Color(int.parse('0x$hexColor'));
   }
 
-  void onAddButtonPressed(ScaffoldState state) {
+  onAddButtonPressed(ScaffoldState state) {
     Modular.to
         .pushNamed(
             AppRoutes.ROUTE_QUESTIONS_VIEW + AppRoutes.ROUTE_ADD_QUESTION_VIEW)
@@ -60,7 +78,7 @@ abstract class DefaultQuestionViewModelBase with Store {
       //TODO implement snackBar layout
       final snackBar = SnackBar(
           content: ListTile(
-            dense: true,
+        dense: true,
         leading: Icon(Icons.check_circle_rounded, color: Colors.white),
         title: Text('Pergunta adicionada com sucesso'),
       ));

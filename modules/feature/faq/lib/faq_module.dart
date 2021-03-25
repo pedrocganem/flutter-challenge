@@ -7,6 +7,7 @@ import 'package:FAQ/scenes/questions/data/repositories/questions_repository.dart
 import 'package:FAQ/scenes/questions/data/services/questions_service.dart';
 import 'package:FAQ/scenes/questions/domain/fetch_question_use_case.dart';
 import 'package:FAQ/scenes/questions/view/questions_view.dart';
+
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:FAQ/scenes/questions/view/questions_view_model.dart';
 import 'package:foundation/constants/routes.dart';
@@ -20,7 +21,7 @@ class FAQModule extends ChildModule {
             singleton: false),
         Bind<FetchQuestionsUseCase>((_) => DefaultFetchQuestionsUseCase(),
             singleton: false),
-        Bind((_) => DefaultQuestionViewModel(), singleton: false),
+        Bind<QuestionViewModel>((_) => DefaultQuestionViewModel(), singleton: false),
 
         // Add question scene
         Bind<AddQuestionService>((_) => DefaultAddQuestionService(),
@@ -29,7 +30,7 @@ class FAQModule extends ChildModule {
             singleton: false),
         Bind<AddQuestionUseCase>((_) => DefaultAddQuestionUseCase(),
             singleton: false),
-        Bind((_) => AddQuestionViewModel(), singleton: false),
+        Bind<AbstractAddQuestionViewModel>((_) => AddQuestionViewModel(), singleton: false),
       ];
 
   @override

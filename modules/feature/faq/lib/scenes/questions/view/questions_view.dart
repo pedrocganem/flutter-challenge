@@ -5,7 +5,7 @@ import 'package:FAQ/scenes/questions/view/questions_view_model.dart';
 import 'package:ui/components/snow_faq_questions_app_bar.dart';
 
 class QuestionsView extends StatefulWidget {
-  final _viewModel = Modular.get<DefaultQuestionViewModel>();
+  final _viewModel = Modular.get<QuestionViewModel>();
 
   @override
   _QuestionsViewState createState() => _QuestionsViewState();

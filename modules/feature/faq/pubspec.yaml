@@ -32,6 +32,9 @@ dev_dependencies:
     sdk: flutter
   build_runner:
   mobx_codegen:
+  testing_tools:
+    path: "../../../modules/core/testing_tools"
+    
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
