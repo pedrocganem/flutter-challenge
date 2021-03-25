@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:ui/design/theme.dart';
 
 class UIUtils {
   static Widget makeTestable(Widget widget) {
     return ModularApp(
         module: FakeUIModule(
-            MaterialApp(home: widget, theme: AppTheme().lightThemeData())));
+            MaterialApp(home: widget))); 
   }
 }
 
@@ -23,3 +22,6 @@ class FakeUIModule extends MainModule {
   @override
   List<ModularRouter> get routers => [];
 }
+
+
+

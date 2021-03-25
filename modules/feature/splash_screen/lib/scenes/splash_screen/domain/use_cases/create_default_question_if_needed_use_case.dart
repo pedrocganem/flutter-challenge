@@ -13,7 +13,6 @@ class DefaultCreateDefaultQuestionsIfNeededUseCase
   @override
   execute() async {
     final isFirstLaunch = await _repository.isFirstLaunch();
-    print('$isFirstLaunch ---------------------------> FirstLaunching');
     if (!isFirstLaunch) return;
     await _repository.setFirstLaunch();
     final defaultQuestions = [

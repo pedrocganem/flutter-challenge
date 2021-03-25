@@ -10,7 +10,9 @@ class DefaultSplashScreenViewModel implements SplashScreenViewModel {
 
   @override
   viewDidLoad() async {
-    await _useCase.execute();
-    Modular.to.pushNamed('/questions');
+    Future.delayed(Duration(seconds: 2), () async {
+      await _useCase.execute();
+      Modular.to.pushNamed('/questions');
+    });
   }
 }

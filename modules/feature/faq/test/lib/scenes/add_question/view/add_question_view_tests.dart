@@ -10,7 +10,7 @@ import 'package:testing_tools/utils/ui/ui.dart';
 void testAddQuestionView() {
   final viewModelStub = AddQuestionViewModelStub();
   final fakeModule =
-      GenericAppModuleFake<AbstractAddQuestionViewModel>(viewModelStub);
+      GenericAppModuleFake(viewModelStub);
   fakeModule.load(isLoadDependency: false);
   testWidgets("AddQuestionView when fields are not valid",
       (WidgetTester tester) async {

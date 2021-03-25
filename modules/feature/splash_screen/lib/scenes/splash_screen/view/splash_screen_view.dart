@@ -18,8 +18,13 @@ class _SplashScreenViewState extends State<SplashScreenView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Image(
+      resizeToAvoidBottomPadding: false,
+      body: Container(
+          decoration: BoxDecoration(
+        image: DecorationImage(
             image: AssetImage('assets/images/splash_screen.png',
-                package: "splash_screen")));
+                package: "splash_screen"), fit: BoxFit.cover),
+      )),
+    );
   }
 }
