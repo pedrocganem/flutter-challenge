@@ -4,7 +4,7 @@
 
 This is a practical test for snowman labs.
 
-#Packages:
+# Packages:
 
   - Hive
   - Shared_Preferences
@@ -13,7 +13,7 @@ This is a practical test for snowman labs.
   - Path_Provider
   - Google_fonts
 
-#GitHub actions:
+# GitHub actions:
   - Flutter test => FAQ & Splash_screen
   - Build iOS
   - Build Android
